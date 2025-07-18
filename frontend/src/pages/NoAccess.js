@@ -7,4 +7,4 @@ const NoAccess = () => (
   </div>
 );
 
-export default NoAccess; 
+export default NoAccess;

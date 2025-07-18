@@ -44,7 +44,7 @@ const simulateAuthMiddleware = (req, res, next) => {
 };
 
 const app = express()
-const allowedOrigins = ['http://10.91.41.16'];
+const allowedOrigins = ['https://10.91.41.16'];
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -1852,4 +1852,8 @@ app.post('/api/terminate-session', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Failed to terminate session', details: err.message });
   }
+});
+const path = require('path');
+app.use((req, res, next) => {
+  res.sendFile(path.join(__dirname, '../frontend/build/index.html'));
 });
