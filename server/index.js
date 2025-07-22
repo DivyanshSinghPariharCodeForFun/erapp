@@ -44,7 +44,7 @@ const simulateAuthMiddleware = (req, res, next) => {
 };
 
 const app = express()
-const allowedOrigins = ['https://10.91.41.16'];
+const allowedOrigins = ['https://10.91.41.16','https://uat-ers.religare.in'];
 
 app.use(cors({
   origin: function (origin, callback) {
@@ -56,6 +56,9 @@ app.use(cors({
   },
   credentials: true
 }));
+
+// Handle preflight requests for all routes
+app.options('*', cors());
 app.use(express.json({ limit: '50mb' }));
 
 // MongoDB Connection
